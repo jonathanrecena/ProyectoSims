@@ -51,3 +51,5 @@ target/
 
 # Variables de entorno o contraseñas locales
 .env
+
+src/main/resources/database.properties
