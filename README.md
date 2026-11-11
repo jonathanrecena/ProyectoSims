@@ -17,6 +17,15 @@ Desarrollado en Java con interfaz gráfica Swing y un sistema de **ranking globa
 * **Multiplataforma:** Distribuido como ejecutable nativo de Windows (`.exe`) y binario ejecutable universal (`.jar`).
 
 ---
+## ❓ Solución de problemas (Troubleshooting)
+
+### ⚠️ Error: "Java Runtime Environment 21 is required" o "A Java Exception has occurred"
+Si al intentar ejecutar el juego te aparece un mensaje indicando que necesitas **Java Runtime Environment 21** o falla al abrir el archivo `.jar`:
+
+1. **Actualizar Java:** Descarga e instala **Java 21 (JDK / JRE)** o superior desde la página oficial de [Oracle Java Downloads](https://www.oracle.com/java/technologies/downloads/) o [Adoptium Temurin](https://adoptium.net/).
+2. **Asociación de ejecutables:** Si tienes varias versiones de Java instaladas en Windows, el sistema puede intentar abrir los archivos con una versión antigua (Java 8). Usar el ejecutable **`Sims2Memory.exe`** resolverá este problema de compatibilidad automáticamente.
+
+---
 ## 📁 Estructura del proyecto
 
 ```text
