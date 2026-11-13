@@ -20,6 +20,10 @@ tasks.test {
     useJUnitPlatform()
 }
 
+tasks.withType<JavaCompile> {
+    options.release.set(17)
+}
+
 tasks.withType<Jar> {
     manifest {
         attributes["Main-Class"] = "Main"
