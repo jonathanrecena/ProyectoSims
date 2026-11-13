@@ -19,3 +19,12 @@ dependencies {
 tasks.test {
     useJUnitPlatform()
 }
+
+tasks.withType<Jar> {
+    manifest {
+        attributes["Main-Class"] = "Main"
+    }
+    // Empaqueta todas las librerías externas (PostgreSQL, etc.) dentro del archivo .jar
+    from(configurations.runtimeClasspath.get().map { if (it.isDirectory) it else zipTree(it) })
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}

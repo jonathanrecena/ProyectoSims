@@ -381,16 +381,21 @@ public class VentanaJuego extends JFrame {
                 }
             }
 
-            // 4. Guardar o actualizar la partida mediante UPSERT
-            String sqlPartida = "INSERT INTO partidas (id_jugador, puntuacion, tiempo_empleado) VALUES (?, ?, ?) " +
+            // 4. Guardar la puntuación de esta partida y actualizar el récord solo si se supera
+            String sqlPartida = "INSERT INTO partidas (id_jugador, puntuacion, ultima_puntuacion, tiempo_empleado) VALUES (?, ?, ?, ?) " +
                     "ON CONFLICT (id_jugador) DO UPDATE SET " +
-                    "  puntuacion = GREATEST(partidas.puntuacion, EXCLUDED.puntuacion), " +
-                    "  tiempo_empleado = EXCLUDED.tiempo_empleado";
+                    "  ultima_puntuacion = EXCLUDED.ultima_puntuacion, " +
+                    "  tiempo_empleado = CASE " +
+                    "    WHEN EXCLUDED.puntuacion > partidas.puntuacion THEN EXCLUDED.tiempo_empleado " +
+                    "    ELSE partidas.tiempo_empleado " +
+                    "  END, " +
+                    "  puntuacion = GREATEST(partidas.puntuacion, EXCLUDED.puntuacion)";
 
             try (PreparedStatement psP = conn.prepareStatement(sqlPartida)) {
                 psP.setInt(1, idJugadorActual);
                 psP.setInt(2, puntuacionSimulada);
-                psP.setString(3, tiempoFormateado);
+                psP.setInt(3, puntuacionSimulada);
+                psP.setString(4, tiempoFormateado);
                 psP.executeUpdate();
             }
 

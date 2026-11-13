@@ -116,7 +116,9 @@ public class VentanaInicioArcade extends JFrame {
         panelCentral.add(Box.createRigidArea(new Dimension(0, 20)));
 
         // --- Zona de la Tabla ---
-        modeloTabla = new DefaultTableModel(new String[]{"Posición", "Sim", "Puntuación", "Tiempo"}, 0);
+        modeloTabla = new DefaultTableModel(
+                new String[]{"Posición", "Sim", "Mejor Puntuación", "Última Partida", "Tiempo Récord"}, 0
+        );
         tablaRanking = new JTable(modeloTabla);
         tablaRanking.setFont(new Font("Arial", Font.PLAIN, 12));
 
@@ -173,7 +175,10 @@ public class VentanaInicioArcade extends JFrame {
             return;
         }
 
-        String query = "SELECT j.nombre, p.puntuacion, p.tiempo_empleado FROM partidas p JOIN jugadores j ON p.id_jugador = j.id_jugador ORDER BY p.puntuacion DESC LIMIT 10";
+        String query = "SELECT j.nombre, p.puntuacion, p.ultima_puntuacion, p.tiempo_empleado " +
+                "FROM partidas p " +
+                "JOIN jugadores j ON p.id_jugador = j.id_jugador " +
+                "ORDER BY p.puntuacion DESC LIMIT 10";
 
         try (PreparedStatement pstmt = conn.prepareStatement(query);
              ResultSet rs = pstmt.executeQuery()) {
@@ -181,9 +186,10 @@ public class VentanaInicioArcade extends JFrame {
             int posicion = 1;
             while (rs.next()) {
                 String nombre = rs.getString("nombre");
-                int puntuacion = rs.getInt("puntuacion");
+                int mejorPuntuacion = rs.getInt("puntuacion");
+                int ultimaPuntuacion = rs.getInt("ultima_puntuacion");
                 String tiempo = rs.getString("tiempo_empleado");
-                modeloTabla.addRow(new Object[]{posicion++, nombre, puntuacion, tiempo});
+                modeloTabla.addRow(new Object[]{posicion++, nombre, mejorPuntuacion, ultimaPuntuacion, tiempo});
             }
 
         } catch (SQLException e) {
