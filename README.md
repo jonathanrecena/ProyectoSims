@@ -1,3 +1,4 @@
+![Gameplay Sims 2 Memory](https://raw.githubusercontent.com/jonathanrecena/ProyectoSims/master/src/main/resources/imagenes/Gameplay.gif)
 # 🎮 Los Sims 2: Memory Game
 
 Minijuego de escritorio estilo **Memory** inspirado en la mítica saga de *Los Sims 2*.
