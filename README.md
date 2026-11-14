@@ -20,10 +20,17 @@ Desarrollado en Java con interfaz gráfica Swing y un sistema de **ranking globa
 ## ❓ Solución de problemas (Troubleshooting)
 
 ### ⚠️ Error: "Java Runtime Environment 21 is required" o "A Java Exception has occurred"
-Si al intentar ejecutar el juego te aparece un mensaje indicando que necesitas **Java Runtime Environment 21** o falla al abrir el archivo `.jar`:
+Si al intentar ejecutar el juego te aparece un mensaje indicando que necesitas **Java 17 / 21 o superior** o falla al abrir el archivo `.jar`, descarga e instala **Oracle Java** (versión 21 o superior) desde la página oficial:
 
-1. **Actualizar Java:** Descarga e instala **Java 21 (JDK / JRE)** o superior desde la página oficial de [Oracle Java Downloads](https://www.oracle.com/java/technologies/downloads/) o [Adoptium Temurin](https://adoptium.net/).
-2. **Asociación de ejecutables:** Si tienes varias versiones de Java instaladas en Windows, el sistema puede intentar abrir los archivos con una versión antigua (Java 8). Usar el ejecutable **`Sims2Memory.exe`** resolverá este problema de compatibilidad automáticamente.
+1. **Descargar e instalar Oracle Java:**
+   * Entra en la **[Página oficial de descargas de Oracle Java](https://www.oracle.com/java/technologies/downloads/)** y selecciona la pestaña de la última versión LTS disponible (por ejemplo, **Java 25** o **Java 21**).
+   * Descarga el instalador correspondiente a tu sistema operativo:
+     * 💻 **Windows (64-bit):** Pestaña **Windows** → **`x64 Installer`** (archivo `.exe`).
+     * 🍏 **macOS — Chip Apple Silicon (M1, M2, M3, M4):** Pestaña **macOS** → **`ARM64 DMG Installer`** (archivo `.dmg`).
+     * 🍏 **macOS — Procesador Intel (x64):** Pestaña **macOS** → **`x64 DMG Installer`** (archivo `.dmg`).
+     * 🐧 **Linux (Ubuntu/Debian):** Pestaña **Linux** → **`x64 Debian Package`** (archivo `.deb`) o **`x64 Compressed Archive`** (`.tar.gz`).
+
+2. **Asociación de ejecutables en Windows:** Si ya tienes varias versiones de Java instaladas, Windows puede intentar abrir el `.jar` con una versión antigua (como Java 8). Usar el ejecutable **`Sims2Memory.exe`** resolverá este problema de compatibilidad automáticamente.
 
 ---
 ## 📁 Estructura del proyecto
